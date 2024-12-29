@@ -1,0 +1,23 @@
+proxy:
+  port: 8084
+  admin-port: 8081
+  authentication: false
+  username: admin
+  password: admin
+  enable-ssl: true
+  allowed-hosts:
+    - "*.cursor.sh"
+    - "*.cursor.so"
+    - "*.openai.com"
+    - "*.anthropic.com"
+    - "*.githubusercontent.com"
+    - "*.github.com"
+    - "raw.githubusercontent.com"
+  max-connections: 1000
+  connect-timeout: 30000
+
+logging:
+  level:
+    root: INFO
+    com.tootoo: DEBUG
+    io.netty: DEBUG 

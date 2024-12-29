@@ -1,53 +1,74 @@
-# too-too
-一个功能强大的 HTTPS 代理服务器，专为创业公司设计。
+# proxy-base
+一个基于 Netty 的轻量级 HTTPS 代理服务器。
 
-## 项目功能
-1. HTTPS 代理服务
-   - 支持 HTTPS 协议代理
-   - 支持基本的身份认证
-   - 支持自定义代理规则
+## 核心功能
+1. HTTP/HTTPS 代理
+   - 支持 HTTP/HTTPS 协议
+   - 支持 CONNECT 方法
+   - 支持基本的身份认证（可配置）
 
-2. 流量监控与分析
-   - 实时流量监控
-   - 请求统计（按域名、时间段等维度）
-   - 带宽使用统计
-   - 响应时间统计
+2. 域名控制
+   - 支持域名白名单配置
+   - 默认支持常见 AI 服务域名
 
-3. 数据可视化
-   - 流量使用趋势图
-   - 热门域名统计
-   - 带宽使用报告
-   - 异常请求分析
-
-## 技术架构
-### 后端技术栈
-- Spring Boot 3.x
-- Netty (用于代理服务器实现)
-- Spring Data JPA (数据持久化)
-- H2 Database (开发环境)
-- MySQL (生产环境)
-
-### 主要模块
-1. proxy-core: 代理服务器核心模块
-2. monitoring: 监控统计模块
-3. analytics: 数据分析模块
-4. web-api: REST API 接口模块
+## 技术栈
+- Spring Boot 2.7.x
+- Netty 4.1.x
+- Java 8
 
 ## 快速开始
 1. 环境要求
-   - JDK 8
+   - JDK 8+
    - Maven 3.6+
-   - MySQL 8.0+ (生产环境)
 
 2. 构建运行
    ```bash
-   mvn clean install
-   java -jar too-too-server/target/too-too-server.jar
+   mvn clean package
+   java -jar target/proxy-base-1.0-SNAPSHOT.jar
    ```
 
 3. 配置代理
-   默认代理端口：8080
-   默认管理界面：http://localhost:8081
+   - 代理地址：127.0.0.1
+   - 代理端口：8080
+   - 认证信息（可选）：
+     - 用户名：admin
+     - 密码：admin
 
 ## 配置说明
-配置文件位于 `src/main/resources/application.yml` # proxy-base
+配置文件位于 `src/main/resources/application.yml`
+
+主要配置项：
+```yaml
+proxy:
+  port: 8080                # 代理服务器端口
+  authentication: false     # 是否启用认证
+  username: admin          # 认证用户名
+  password: admin          # 认证密码
+  enable-ssl: true         # 启用 SSL 支持
+  allowed-hosts:           # 允许访问的域名
+    - "*.cursor.sh"
+    - "*.cursor.so"
+    - "*.openai.com"
+    # ... 其他域名
+```
+
+## 项目结构
+```
+src/main/java/com/tootoo/
+├── TooTooApplication.java          # 应用入口
+├── config/
+│   └── ProxyConfig.java           # 配置类
+└── proxy/
+    ├── ProxyServer.java           # 代理服务器核心
+    ├── frontend/                  # 前端处理器
+    ├── backend/                   # 后端处理器
+    ├── ssl/                      # SSL 处理
+    └── util/                     # 工具类
+```
+
+## 版本说明
+当前版本: 1.0.0-base
+- 实现基本的代理功能
+- 支持 HTTP/HTTPS
+- 支持基本认证
+- 支持域名白名单

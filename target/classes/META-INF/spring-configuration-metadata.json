@@ -1,0 +1,66 @@
+{
+  "groups": [
+    {
+      "name": "proxy",
+      "type": "com.tootoo.config.ProxyConfig",
+      "sourceType": "com.tootoo.config.ProxyConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "proxy.admin-port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.tootoo.config.ProxyConfig",
+      "defaultValue": 8081
+    },
+    {
+      "name": "proxy.allowed-hosts",
+      "type": "java.lang.String[]",
+      "sourceType": "com.tootoo.config.ProxyConfig",
+      "defaultValue": [
+        "*"
+      ]
+    },
+    {
+      "name": "proxy.authentication",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.tootoo.config.ProxyConfig",
+      "defaultValue": false
+    },
+    {
+      "name": "proxy.connect-timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "com.tootoo.config.ProxyConfig",
+      "defaultValue": 30000
+    },
+    {
+      "name": "proxy.enable-ssl",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.tootoo.config.ProxyConfig",
+      "defaultValue": true
+    },
+    {
+      "name": "proxy.max-connections",
+      "type": "java.lang.Integer",
+      "sourceType": "com.tootoo.config.ProxyConfig",
+      "defaultValue": 1000
+    },
+    {
+      "name": "proxy.password",
+      "type": "java.lang.String",
+      "sourceType": "com.tootoo.config.ProxyConfig"
+    },
+    {
+      "name": "proxy.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.tootoo.config.ProxyConfig",
+      "defaultValue": 8080
+    },
+    {
+      "name": "proxy.username",
+      "type": "java.lang.String",
+      "sourceType": "com.tootoo.config.ProxyConfig"
+    }
+  ],
+  "hints": []
+}
